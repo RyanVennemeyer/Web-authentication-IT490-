@@ -24,22 +24,6 @@
     echo "\n\n";
 
     echo $argv[0]." END".PHP_EOL;
-    /*
-    function login($username, $password){
-        
-        $request = array();
-        
-        $request['type'] = "Login";
-        $request['username'] = $username;
-        $request['password'] = $password;
-        
-        
-        $_SESSION["username"] = $username;
-        
-        $response = $client->send_request($request);
-
-        echo $response["returnCode"];
-        return $request;
-    }*/
+  
 
 ?>
