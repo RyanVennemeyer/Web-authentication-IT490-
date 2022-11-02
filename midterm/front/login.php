@@ -35,18 +35,18 @@ $arr['password'] = $password;
 
 $send = $client->send_request($arr);
 
-
+/*
 switch ($request["type"])
 {
     case "login":
         $response = "login, yeah we can do that";
     break;
 }
-
+*/
 //echo json_encode($request);
 //echo "". PHP_EOL;
 //echo json_encode($_POST);
-var_dump($arr);
+///var_dump($arr);
 exit(0);
 
 ?>

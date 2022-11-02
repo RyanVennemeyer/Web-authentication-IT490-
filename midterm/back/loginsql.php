@@ -44,10 +44,12 @@ function login($username, $password)
 	echo "test complete" . PHP_EOL;
 	if ($users == 1) {
 		echo "pass" . PHP_EOL;
+		return true;
 	} else {
 		echo "fail" . PHP_EOL;
+		return true;
 	}
-	return true;
+	
 }
 
 function requestProcessor($request)
