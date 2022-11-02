@@ -1,0 +1,66 @@
+<!--<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IT490 Login</title>
+
+</head>
+
+<body>
+    <form action="login.php" method="post">
+        <div class="container">
+            <h2>IT490 Login Page</h2><label></label>
+            <p><label>username</label></p><input name="username" placeholder="Enter username" required="" type="text"> <label></label>
+            <p><label>password</label></p><input name="password" placeholder="Enter password" required="" type="password">
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+</body>
+
+</html>
+-->
+<html>
+<script>
+    function HandleLoginResponse(response) {
+        var text = JSON.parse(response);
+        //	document.getElementById("textResponse").innerHTML = response+"<p>";	
+        document.getElementById("textResponse").innerHTML = "response: " + text + "<p>";
+    }
+
+    function SendLoginRequest(username, password) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "login.php", true);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.onreadystatechange = function() {
+
+            if ((this.readyState == 4) && (this.status == 200)) {
+                HandleLoginResponse(this.responseText);
+            }
+        }
+        request.send("type=login&username=" + username + "&password=" + password);
+    }
+</script>
+
+<h1>login page</h1>
+
+<body>
+    <div id="textResponse">
+        awaiting response
+    </div>
+    <form action="login.php" method="post">
+        <div class="container">
+            <h2>IT490 Login Page</h2><label></label>
+            <p><label>username</label></p><input name="username" placeholder="Enter username" required="" type="text"> <label></label>
+            <p><label>password</label></p><input name="password" placeholder="Enter password" required="" type="password">
+            <button type="submit" onclick=" ">Login</button>
+        </div>
+    </form>
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            SendLoginRequest(username, password);
+        }
+    </script>
+</body>
