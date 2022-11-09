@@ -1,4 +1,3 @@
-
 #!/usr/bin/php
 <?php
 ///template from https://github.com/engineerOfLies/rabbitmqphp_example.git
@@ -16,6 +15,8 @@ function login($username, $password)
 	$ptest = $_POST["password"];
 	if ($mydb->errno != 0) {
 		echo "failed to connect to database: " . $mydb->error . PHP_EOL;
+        ini_set('display_errors',1); 
+        error_reporting(E_ALL);
 		exit(0);
 	}
 
@@ -43,9 +44,12 @@ function login($username, $password)
 
 	echo "test complete" . PHP_EOL;
 	if ($users == 1) {
+
 		echo "pass" . PHP_EOL;
+		
 	} else {
 		echo "fail" . PHP_EOL;
+		
 	}
 	return true;
 }
@@ -63,6 +67,7 @@ function requestProcessor($request)
 		//case "validate_session":
 			//return doValidate($request['sessionId']);
 	}
+	echo "it get here";
 	return array("returnCode" => '0', 'message' => "Server received request and processed");
 }
 
@@ -70,6 +75,7 @@ $server = new rabbitMQServer("testRabbitMQ.ini", "testServer");
 
 echo "testRabbitMQServer BEGIN" . PHP_EOL;
 $server->process_requests('requestProcessor');
+echo "why break";
 echo "testRabbitMQServer END" . PHP_EOL;
 exit();
 ?>
